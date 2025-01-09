@@ -32,8 +32,8 @@ describe("Sign Up", () => {
   });
 
   it("Register with registered data", () => {
-    inputUsername(users[0].username);
-    inputPassword(users[0].password);
+    inputUsername(users[1].username);
+    inputPassword(users[1].password);
     clickRegisterButton();
     verifyRegistrationFailed();
   });

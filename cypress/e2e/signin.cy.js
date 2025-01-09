@@ -11,12 +11,9 @@ const {
   verifyUserDoNotExistAlert,
   verifyFillUsernamePasswordAlert,
 } = require("../pageObjects/LogInModal.js");
+const users = require("../shared/users.js");
 
 describe("Sign In", () => {
-  const user = {
-    username: "Sherly83",
-    password: "password",
-  };
   beforeEach(() => {
     goToHomePage();
     clickLogIn();
@@ -35,9 +32,9 @@ describe("Sign In", () => {
   });
 
   it("Login with existing data", () => {
-    inputUsername(user.username);
-    inputPassword(user.password);
+    inputUsername(users[0].username);
+    inputPassword(users[0].password);
     clickLogInButton();
-    verifyNavbarHaveUsername(user.username);
+    verifyNavbarHaveUsername(users[0].username);
   });
 });
