@@ -6,12 +6,10 @@ const {
 } = require("../pageObjects/DetailProduct.js");
 const {
   verifyProductIsVisible,
-  clickLogIn,
   verifyProductIsClickAble,
   verifyProductIsnotExist,
 } = require("../pageObjects/HomePage.js");
 const productList = require("../shared/productList.js");
-const users = require("../shared/users.js");
 const cyLoginStep = require("../shared/cyLoginStep.js");
 
 describe("Product", () => {
