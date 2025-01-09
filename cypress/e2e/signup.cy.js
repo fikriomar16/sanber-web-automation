@@ -5,27 +5,36 @@ const {
   inputPassword,
   clickRegisterButton,
   verifyRegistrationSuccess,
+  verifyRegistrationFailed,
+  verifyFillUsernamePasswordAlert,
 } = require("../pageObjects/SignUpModal.js");
+const users = require("../shared/users.js");
 
 describe("Sign Up", () => {
-  let username;
   beforeEach(() => {
     goToHomePage();
     clickSignUp();
   });
-  afterEach(() => {
+  const user = { username: faker.internet.username(), password: "password" };
+
+  it("Register with empty form", () => {
     clickRegisterButton();
-    verifyRegistrationSuccess();
+    verifyFillUsernamePasswordAlert();
   });
 
   it("Register with new data", () => {
-    username = faker.internet.username();
-    inputUsername(username);
-    inputPassword("password");
+    inputUsername(user.username);
+    inputPassword(user.password);
+    clickRegisterButton();
+    verifyRegistrationSuccess();
+    // reusable variables
+    users.push(user);
   });
 
   it("Register with registered data", () => {
-    inputUsername(username);
-    inputPassword("password");
+    inputUsername(users[0].username);
+    inputPassword(users[0].password);
+    clickRegisterButton();
+    verifyRegistrationFailed();
   });
 });

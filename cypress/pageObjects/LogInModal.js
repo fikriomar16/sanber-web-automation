@@ -1,10 +1,10 @@
 const {
   usernameInput,
   passwordInput,
-  signUpButton,
-} = require("../locators/signUpLocators.js");
+  logInButton,
+} = require("../locators/logInLocators.js");
 
-class SignUpModal {
+class LogInModal {
   inputUsername(username) {
     cy.wait(1000);
     cy.xpath(usernameInput).type(username, { timeout: 2000 });
@@ -21,21 +21,14 @@ class SignUpModal {
     });
   }
 
-  clickRegisterButton() {
-    cy.xpath(signUpButton).click({ timeout: 2000 });
+  clickLogInButton() {
+    cy.xpath(logInButton).click({ timeout: 2000 });
   }
 
-  verifyRegistrationSuccess() {
+  verifyUserDoNotExistAlert() {
     cy.wait(2000);
     cy.on("window:alert", (text) => {
-      expect(text).to.eq("Sign up successful.");
-    });
-  }
-
-  verifyRegistrationFailed() {
-    cy.wait(2000);
-    cy.on("window:alert", (text) => {
-      expect(text).to.eq("This user already exist.");
+      expect(text).to.eq("User does not exist.");
     });
   }
 
@@ -47,4 +40,4 @@ class SignUpModal {
   }
 }
 
-module.exports = new SignUpModal();
+module.exports = new LogInModal();
