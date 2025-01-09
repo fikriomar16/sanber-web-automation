@@ -3,7 +3,7 @@ const {
   goToHomePage,
   clickLogIn,
   verifyNavbarHaveUsername,
-} = require("../pageObjects/homePage.js");
+} = require("../pageObjects/HomePage.js");
 const {
   inputUsername,
   inputPassword,

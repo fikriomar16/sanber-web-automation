@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker/locale/id_ID");
-const { goToHomePage, clickSignUp } = require("../pageObjects/homePage.js");
+const { goToHomePage, clickSignUp } = require("../pageObjects/HomePage.js");
 const {
   inputUsername,
   inputPassword,
