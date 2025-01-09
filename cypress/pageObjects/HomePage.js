@@ -1,6 +1,4 @@
 const { navbar, display } = require("../locators/homeLocators.js");
-const { logInUrl } = require("../locators/logInLocators.js");
-const { signUpUrl } = require("../locators/signUpLocators.js");
 
 class HomePage {
   goToHomePage() {
@@ -8,11 +6,15 @@ class HomePage {
   }
 
   clickSignUp() {
-    cy.xpath(signUpUrl).click({ timeout: 2000 });
+    cy.xpath(navbar.signUpUrl).click({ timeout: 2000 });
   }
 
   clickLogIn() {
-    cy.xpath(logInUrl).click({ timeout: 2000 });
+    cy.xpath(navbar.logInUrl).click({ timeout: 2000 });
+  }
+
+  clickCart() {
+    cy.xpath(navbar.cartUrl).click({ timeout: 2000 });
   }
 
   verifyNavbarHaveUsername(username) {
