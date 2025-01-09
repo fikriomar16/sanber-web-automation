@@ -24,6 +24,13 @@ class HomePage {
     });
   }
 
+  verifyProductIsnotExist(productName) {
+    cy.wait(1000);
+    cy.xpath(display.productName(productName)).should("not.exist", {
+      timeout: 2000,
+    });
+  }
+
   verifyProductIsVisible(productName) {
     cy.wait(1000);
     cy.xpath(display.productName(productName)).should("be.visible", {

@@ -1,41 +1,26 @@
+const { faker } = require("@faker-js/faker/locale/id_ID");
 const {
   verifyAddToCartButtonIsVisible,
   clickAddToCartButton,
   verifyProductAddedAlert,
 } = require("../pageObjects/DetailProduct.js");
 const {
-  goToHomePage,
-  verifyNavbarHaveUsername,
   verifyProductIsVisible,
   clickLogIn,
   verifyProductIsClickAble,
+  verifyProductIsnotExist,
 } = require("../pageObjects/HomePage.js");
-const {
-  inputUsername,
-  inputPassword,
-  clickLogInButton,
-} = require("../pageObjects/LogInModal.js");
+const productList = require("../shared/productList.js");
 const users = require("../shared/users.js");
+const cyLoginStep = require("../shared/cyLoginStep.js");
 
 describe("Product", () => {
-  const productList = [
-    "Samsung galaxy s6",
-    "Nokia lumia 1520",
-    "Iphone 6 32gb",
-    "Sony xperia z5",
-    "Samsung galaxy s7",
-  ];
   // ambil random product dari list
   const productName =
     productList[Math.floor(Math.random() * productList.length)];
 
   beforeEach(() => {
-    goToHomePage();
-    clickLogIn();
-    inputUsername(users[0].username);
-    inputPassword(users[0].password);
-    clickLogInButton();
-    verifyNavbarHaveUsername(users[0].username);
+    cyLoginStep();
   });
 
   it("Product is exists and ready to put in cart", () => {
@@ -44,5 +29,9 @@ describe("Product", () => {
     verifyAddToCartButtonIsVisible();
     clickAddToCartButton();
     verifyProductAddedAlert();
+  });
+
+  it("Product isn't exists", () => {
+    verifyProductIsnotExist(faker.commerce.product());
   });
 });
