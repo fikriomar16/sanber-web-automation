@@ -21,15 +21,15 @@ describe("Product", () => {
     cyLoginStep();
   });
 
+  it("Product isn't exists", () => {
+    verifyProductIsnotExist(faker.commerce.product());
+  });
+
   it("Product is exists and ready to put in cart", () => {
     verifyProductIsVisible(productName);
     verifyProductIsClickAble(productName);
     verifyAddToCartButtonIsVisible();
     clickAddToCartButton();
     verifyProductAddedAlert();
-  });
-
-  it("Product isn't exists", () => {
-    verifyProductIsnotExist(faker.commerce.product());
   });
 });

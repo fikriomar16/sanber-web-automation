@@ -18,7 +18,7 @@ class HomePage {
   }
 
   verifyNavbarHaveUsername(username) {
-    cy.wait(2000);
+    cy.wait(4000);
     cy.xpath(navbar.username).should("have.text", `Welcome ${username}`, {
       timeout: 2000,
     });
