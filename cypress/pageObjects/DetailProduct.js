@@ -12,7 +12,7 @@ class DetailProduct {
   }
   verifyProductAddedAlert() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("Product added.");
     });
   }

@@ -27,14 +27,14 @@ class LogInModal {
 
   verifyUserDoNotExistAlert() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("User does not exist.");
     });
   }
 
   verifyFillUsernamePasswordAlert() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("Please fill out Username and Password.");
     });
   }

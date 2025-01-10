@@ -27,21 +27,21 @@ class SignUpModal {
 
   verifyRegistrationSuccess() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("Sign up successful.");
     });
   }
 
   verifyRegistrationFailed() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("This user already exist.");
     });
   }
 
   verifyFillUsernamePasswordAlert() {
     cy.wait(2000);
-    cy.on("window:alert", (text) => {
+    cy.on("window:confirm", (text) => {
       expect(text).to.eq("Please fill out Username and Password.");
     });
   }
