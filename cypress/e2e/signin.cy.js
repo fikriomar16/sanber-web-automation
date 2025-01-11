@@ -1,4 +1,4 @@
-const { faker } = require("@faker-js/faker/locale/id_ID");
+const { faker } = require("@faker-js/faker/locale/ja");
 const {
   goToHomePage,
   clickLogIn,
